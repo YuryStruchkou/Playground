@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Playground.Middleware;
 
 namespace Playground
 {
@@ -21,10 +22,9 @@ namespace Playground
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
+            app.UseMiddleware<ErrorMiddleware>();
+            app.UseMiddleware<TokenMiddleware>("111");
+            app.UseMiddleware<RoutingMiddleware>();
         }
     }
 }
