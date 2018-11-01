@@ -22,6 +22,7 @@ namespace Playground
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
             app.UseMiddleware<ErrorMiddleware>();
             app.UseMiddleware<TokenMiddleware>("111");
             app.UseMiddleware<RoutingMiddleware>();
